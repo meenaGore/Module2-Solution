@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js">
+    </script>
+    <script src="app.js">
+    </script>
+    <style media="screen">
+       #error1 {
+        color: red;
+        font-size :1em;
+        font-style: italic;
+      }
+    </style>
+    <title>Module2-Solution</title>
+  </head>
+  <h1>Shopping List Application</h1>
+  <body ng-app="ShoppingListCheckOff">
+    <div ng-controller="ToBuyShoppingController as toBuy">
+      <h3>To Buy </h3>
+        <ul>
+          <li ng-repeat ="item in toBuy.items">
+             Buy {{item.qty}} of {{item.itemnm}} <button ng-click="toBuy.BoughtAlready($index)" >Bought</button>
+             </li>
+        </ul>
+        <div ng-if="toBuy.errorMsg" id="error1">{{  toBuy.errorMsg }}
+              </div>
+    </div>
+    <div ng-controller="AlreadyBoughtShoppingController as boughtItems">
+      <h3> Already Bought</h3>
+      <ol>
+        <li  ng-repeat ="item in boughtItems.items" >
+           Bought  {{item.qty}}  {{item.itemnm}}
+        </li>
+      </ol>
+      <div ng-if="boughtItems.items.length<=0" id="error1">{{  boughtItems.errorMsg }}
+            </div>
+    </div>
+
+  </body>
+</html>
